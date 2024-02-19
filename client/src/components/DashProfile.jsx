@@ -21,12 +21,15 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
+
+
+
 
 export default function DashProfile() {
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileURL, setImageFileURL] = useState(null);
-  const filePickerRef = useRef();
   const [imageFileUploadingProgress, setImageFileUploadingProgress] = useState(null);
   const [imageFileUploadingError, setImageFileUploadingError] = useState(null);
   const [imageFileUploadingSuccess, setImageFileUploadingSuccess] = useState(false);
@@ -34,6 +37,7 @@ export default function DashProfile() {
   const [updateUserError, setUpdateUserError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({});
+  const filePickerRef = useRef();
   const dispatch = useDispatch();
 
   const handleImageChange = (e) => {
@@ -242,9 +246,17 @@ export default function DashProfile() {
           placeholder="************"
           onChange={handleChange}
         />
-        <Button type="submit" gradientDuoTone="purpleToBlue" outline>
-          Update
+        <Button type="submit" gradientDuoTone="purpleToBlue" outline disabled={loading || imageFileUploadingSuccess}>
+          {loading ? "Loading..." : "Update"}
         </Button>
+        {currentUser.isAdmin && (
+            <Link to={'/create-post'}>
+              <Button type="button" gradientDuoTone='purpleToPink' className="w-full">
+                Create Post
+              </Button>
+            </Link>
+          )
+        }
       </form>
       <div className="text-red-500 flex justify-between mt-5">
         <span

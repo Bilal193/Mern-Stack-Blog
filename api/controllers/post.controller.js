@@ -35,7 +35,7 @@ import Post from '../models/post.model.js'
 
         const posts = await Post.find({
             ...(req.query.userId && { userId: req.query.userId }),
-            ...(req.query.category && { category: req.query.category }),
+            ...(req.query.categories && { categories: req.query.categories }),
             ...(req.query.slug && { slug: req.query.slug }),
             ...(req.query.postId && { _id: req.query.postId }),
             ...(req.query.searchTerm && { 
@@ -56,6 +56,45 @@ import Post from '../models/post.model.js'
         });
 
         res.status(200).json({ posts, totalPosts, lastMonthPosts });
+    } catch (error) {
+        next(error);
+    }
+ }
+
+
+ export const deletepost = async (req, res, next) => {
+    if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+        return next(errorHandler(403, 'You are not authorized to delete a post'))
+    }
+
+    try {
+        await Post.findByIdAndDelete(req.params.postId);
+        res.status(200).json({ message: 'Post deleted successfully' });
+    } catch (error) {
+        next(error);
+    }
+ }
+
+ export const updatepost = async (req, res, next) => {
+    if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+        return next(errorHandler(403, 'You are not authorized to update a post'))
+    }
+    try {
+        const updatePost = await Post.findByIdAndUpdate(
+            req.params.postId, 
+            { 
+                $set: {
+                    title: req.body.title,
+                    content: req.body.content,
+                    categories: req.body.categories,
+                    image: req.body.image,
+                }
+            }, 
+            { 
+                new: true 
+            }
+        );
+        res.status(200).json(updatePost);
     } catch (error) {
         next(error);
     }

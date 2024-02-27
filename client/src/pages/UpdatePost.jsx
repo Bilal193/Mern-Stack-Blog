@@ -15,7 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function UpdatePost() {
-  const { currentUser } = useSelector((state) => state.user);
+
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -23,10 +23,11 @@ export default function UpdatePost() {
   const [publishError, setPublishError] = useState(null);
   const navigate = useNavigate();
   const { postId } = useParams();
-
+  const { currentUser } = useSelector((state) => state.user);
+  
   useEffect(() => {
     try {
-      const fetchPosts = async () => {
+      const fetchPost = async () => {
         const res = await fetch(`/api/post/getposts?postId=${postId}`);
         const data = await res.json();
         if (!res.ok) {
@@ -39,7 +40,7 @@ export default function UpdatePost() {
           setFormData(data.posts[0]);
         }
       };
-      fetchPosts();
+      fetchPost();
     } catch (error) {
       console.log(error.message);
       setPublishError("Error fetching post", error.message);

@@ -14,18 +14,18 @@ export default function FooterCom() {
                 </div>
                 <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6'>
                     <div>
-                    <Footer.Title title='About' />
+                    <Footer.Title title='About Us' />
                     <Footer.LinkGroup col>
-                        <Footer.Link href='https://www.hidescanada.com' target='_blank' rel='noopener noreferrer'>
-                            Hides Canada
+                        <Footer.Link href='https://devifylabs.com/' target='_blank' rel='noopener noreferrer'>
+                            Devify Labs
                         </Footer.Link>
-                        <Footer.Link href='https://lashible.com/' target='_blank' rel='noopener noreferrer'>
-                            Lashible
+                        <Footer.Link href='https://www.upwork.com/agencies/425236720825561088/' target='_blank' rel='noopener noreferrer'>
+                            Upwork
                         </Footer.Link>
                     </Footer.LinkGroup>
                     </div>
                     <div>
-                    <Footer.Title title='Follow Us' />
+                    <Footer.Title title='Our Portfolio' />
                     <Footer.LinkGroup col>
                         <Footer.Link href='https://www.hidescanada.com' target='_blank' rel='noopener noreferrer'>
                             Hides Canada

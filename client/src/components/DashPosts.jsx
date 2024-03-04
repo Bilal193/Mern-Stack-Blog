@@ -164,7 +164,7 @@ export default function DashPosts() {
           </h3>
           <div className="flex justify-center gap-4">
             <Button color="failure" onClick={handleDeletePost}>
-              Yes, I'm sure
+              Yes, Im sure
             </Button>
             <Button color="gray" onClick={() => setShowModal(false)}>
               No, take me back

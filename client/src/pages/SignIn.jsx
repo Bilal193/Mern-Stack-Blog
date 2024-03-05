@@ -55,7 +55,7 @@ export default function SignIn() {
         {/* left side */}
         <div className="flex-1">
         <Link to="/" className='font-bold dark:text-white text-4xl'>
-            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>Arslan's</span> Blog
+            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>Arslans</span> Blog
         </Link>
         <p className='text-sm mt-5'>
           This is a demo project for a blog website. This project is made using React, Node, Express, MongoDB, TailwindCSS, and Flowbite.
@@ -87,7 +87,7 @@ export default function SignIn() {
             <OAuth />
           </form>
           <div className='flex gap-2 text-sm mt-5'>
-            <span className=''>Don't have an account?</span>
+            <span className=''>Dont have an account?</span>
             <Link to='/sign-up' className='text-blue-500'> Sign Up</Link>
           </div>
           {

@@ -98,7 +98,7 @@ export default function CreatePost() {
             <option value="vuejs">Vue.js</option>
             <option value="nodejs">Node.js</option>
             <option value="expressjs">Express.js</option>
-            <option value="mongodb">MongoDB</option>s
+            <option value="mongodb">MongoDB</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">

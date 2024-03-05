@@ -31,7 +31,7 @@ useEffect(() => {
         View all articles
       </Link>
       </div>
-      <div className="p-3 max-w-7xl bg-amber-100 dark:bg-slate-700">
+      <div className="p-3 max-w-7xl mx-auto bg-amber-100 dark:bg-slate-700">
         <CallToAction />
       </div>
       <div className="max-w-7xl mx-auto p-3 flex flex-col gap-8 py-7">
